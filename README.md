@@ -10,6 +10,22 @@ The response is always:
 
 `bbox` is the top-left and bottom-right corner in pixels of the uploaded image.
 
+## Access
+
+The running app is at [https://checkbox-detection-3614.onrender.com](https://checkbox-detection-3614.onrender.com).
+
+Open that page, drop an image, and press Detect. OpenCV and Mock LLM both run on the server. Local LLM is not available there, because that mode calls a vision model on the same machine and this host does not have one.
+
+From a terminal:
+
+```bash
+curl -F "image=@samples/sample_2.png" -F "method=cv" https://checkbox-detection-3614.onrender.com/detect
+```
+
+Use `method=llm` for the mock. The source is at [github.com/g33kz0rd/checkbox-detection](https://github.com/g33kz0rd/checkbox-detection). Deploys are listed in the [Render dashboard](https://dashboard.render.com/web/srv-dbn3q93rjlhs73diu650).
+
+The free instance sleeps when nobody has used it for a while. The first request after that can take a minute while it wakes up.
+
 ## Setup
 
 Do this yourself from the project folder. The script further down only repeats these steps.
